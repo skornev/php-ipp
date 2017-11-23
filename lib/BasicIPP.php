@@ -147,6 +147,7 @@ class BasicIPP
 
 		date_default_timezone_set($tz);
 		$this->meta = new \stdClass();
+		$this->meta->jobid = 0;
 		$this->setup = new \stdClass();
 		$this->values = new \stdClass();
 		$this->serveroutput = new \stdClass();
@@ -922,7 +923,7 @@ class BasicIPP
 			}
 		}
 		$http->Close();
-		return true;
+		return ($success[0] == true);
 	}
 
 	//
@@ -1145,7 +1146,8 @@ class BasicIPP
 	protected function _parseHttpHeaders()
 	{
 		$response = "";
-		switch ($this->serveroutput->headers[0])
+		$httpResponseCode = isset($this->serveroutput->headers[0]) ? $this->serveroutput->headers[0] : '';
+		switch ($httpResponseCode)
 		{
 			case "http/1.1 200 ok: ":
 				$this->serveroutput->httpstatus = "HTTP/1.1 200 OK";
