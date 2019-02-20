@@ -234,17 +234,17 @@ class http_class
 				}
 			}
 		}
-        if ($transport_type == 'tls://'){
-            $context = stream_context_create([
-                'ssl' => [
-                    'verify_peer' => $this->is_verify_peer,
-                    'verify_peer_name' => $this->is_verify_peer_name
-                ]
-            ]);
-            $this->connection  = @stream_socket_client($transport_type . $url.':'.$port, $errno, $errstr, $this->timeout, STREAM_CLIENT_CONNECT, $context);
-        }else {
-            $this->connection = @fsockopen($transport_type . $url, $port, $errno, $errstr, $this->timeout);
-        }
+		if ($transport_type == 'tls://'){
+			$context = stream_context_create([
+				'ssl' => [
+					'verify_peer' => $this->is_verify_peer,
+					'verify_peer_name' => $this->is_verify_peer_name
+				]
+			]);
+			$this->connection  = @stream_socket_client($transport_type . $url.':'.$port, $errno, $errstr, $this->timeout, STREAM_CLIENT_CONNECT, $context);
+		}else {
+			$this->connection = @fsockopen($transport_type . $url, $port, $errno, $errstr, $this->timeout);
+		}
 		$error =
 			sprintf(_('Unable to connect to "%s%s port %s": %s'), $transport_type,
 				$url, $port, $errstr);
