@@ -809,8 +809,8 @@ class BasicIPP
 		}
 		$http->port = $this->port;
 		$http->timeout = $this->http_timeout;
-        $http->is_verify_peer = $this->is_verify_peer;
-        $http->is_verify_peer_name = $this->is_verify_peer_name;
+		$http->is_verify_peer = $this->is_verify_peer;
+		$http->is_verify_peer_name = $this->is_verify_peer_name;
 		$http->data_timeout = $this->http_data_timeout;
 		$http->force_multipart_form_post = false;
 		$http->user = $this->username;
