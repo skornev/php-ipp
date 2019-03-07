@@ -411,11 +411,11 @@ class BasicIPP
 
 		switch ($sides)
 		{
-			case 1:
+			case "1":
 				$sides = "one-sided";
 				break;
 
-			case 2:
+			case "2":
 				$sides = "two-sided-long-edge";
 				break;
 
