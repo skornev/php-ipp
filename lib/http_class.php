@@ -367,8 +367,8 @@ class http_class
 	private function _streamString($string)
 	{
 		$success = fwrite($this->connection, $string);
-		if (!$success)
-		{
+        if ($success === false)
+        {
 			return false;
 		}
 		return true;
